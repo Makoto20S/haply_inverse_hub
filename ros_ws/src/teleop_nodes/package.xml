@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>teleop_nodes</name>
+  <version>0.1.0</version>
+  <description>Haply Inverse3 遥操作节点包</description>
+  <maintainer email="you@example.com">maintainer</maintainer>
+  <license>MIT</license>
+
+  <!--
+    ament_python: 告诉 colcon 这是一个纯 Python 包（不需要 CMake）
+    对比 teleop_msgs 用的是 ament_cmake，因为 .msg 需要 C++ 代码生成
+  -->
+  <buildtool_depend>ament_python</buildtool_depend>
+
+  <!-- 运行时依赖：你的节点 import 了这些 ROS2 包 -->
+  <exec_depend>rclpy</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
+  <exec_depend>geometry_msgs</exec_depend>
+  <exec_depend>teleop_msgs</exec_depend>
+
+  <!-- launch 文件依赖 -->
+  <exec_depend>ros2launch</exec_depend>
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>

@@ -1,0 +1,65 @@
+[network]
+uri = "ws://localhost:10001"
+max_retries = 3
+timeout = 5.0
+reconnect_interval = 1.0
+
+[coordinate]
+origin = "workspace_center"
+basis = "XYZ"
+scale_factor = 1.0
+
+[device]
+data_refresh_rate = 0.0
+force_feedback_enabled = true
+inverse3_device_id = ""
+verse_grip_device_id = ""
+
+wall_x = 100.0
+wall_y = 100.0
+floor_z = -100.0
+wall_stiffness = 0.0
+floor_stiffness = 0.0
+wall_damping = 0.0
+floor_damping = 0.0
+force_filter_cutoff_hz = 50.0
+sampling_time = 0.001
+force_filter_enabled = false
+force_limit = 0.0
+dead_zone_threshold = 0.001
+zero_speed_threshold = 0.001
+min_force_threshold = 100.0
+dynamic_wall_enabled = false
+default_speed_threshold = 0.1
+default_low_speed_stiffness_1 = 0.0
+default_high_speed_stiffness_1 = 0.0
+default_low_speed_damping_1 = 0.0
+default_high_speed_damping_1 = 0.0
+default_low_speed_stiffness_2 = 0.0
+default_high_speed_stiffness_2 = 0.0
+default_low_speed_damping_2 = 0.0
+default_high_speed_damping_2 = 0.0
+default_damping_factor = 0.0
+hysteresis_zone = 0.001
+dead_zone_threshold_speed = 0.001
+wall_position_limit = 100.0
+floor_position_limit = 100.0
+stiffness_min = 0.0
+stiffness_max = 2000.0
+damping_min = 0.0
+damping_max = 40.0
+force_filter_cutoff_min_hz = 10.0
+force_filter_cutoff_max_hz = 500.0
+
+[robot]
+robot_type = "inverse3"
+robot_mode = "real"  # inverse3为真机模式
+robot_list = ["inverse3"]  # leader只支持inverse3
+tool_offset = [0, 0, 0]
+home_position = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+
+[visualization]
+update_interval = 0.016
+window_width = 800
+window_height = 600
+background_color = [0.1, 0.1, 0.1, 1.0]

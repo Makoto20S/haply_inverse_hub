@@ -1,0 +1,4 @@
+numpy==1.26.4
+websockets==16.0
+orjson==3.11.7
+tomlkit==0.14.0

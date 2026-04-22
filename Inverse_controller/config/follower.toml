@@ -1,0 +1,46 @@
+[network]
+uri = "ws://localhost:10002"
+max_retries = 3
+timeout = 5.0
+reconnect_interval = 1.0
+
+[coordinate]
+origin = "workspace_center"
+basis = "XYZ"
+scale_factor = 1.0
+
+[device]
+data_refresh_rate = 0.0
+force_feedback_enabled = false
+inverse3_device_id = ""
+verse_grip_device_id = ""
+
+[force_feedback]
+wall_x = 0.1
+wall_y = 0.1
+floor_z = -0.1
+wall_stiffness = 500.0
+floor_stiffness = 500.0
+wall_damping = 5.0
+floor_damping = 5.0
+force_filter_cutoff_hz = 10.0
+sampling_time = 0.001
+force_filter_enabled = false
+force_limit = 5.0
+dead_zone_threshold = 0.002
+zero_speed_threshold = 0.002
+min_force_threshold = 0.2
+dynamic_wall_enabled = true
+
+[robot]
+robot_type = "iiwa14"
+robot_mode = "simulation"
+robot_list = ["iiwa14", "franka_fr3_v2"]
+tool_offset = [0.0, 0.0, 0.21]
+home_position = [0.0, 0.785, 0.0, -0.785, 0.0, 1.571, 0.0] # [0.0, -0.785, 0.0, -2.356, 0.0, 1.571, 0.785]
+
+[visualization]
+update_interval = 0.033
+window_width = 640
+window_height = 480
+background_color = [0.2, 0.2, 0.2, 1.0]

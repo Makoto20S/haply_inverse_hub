@@ -1,0 +1,22 @@
+{
+  "name": "Haply Inverse",
+  "dockerComposeFile": "../docker-compose.yml",
+  "service": "haply-inverse",
+  "workspaceFolder": "/HAPLY_INVERSE",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-python.pylance",
+        "ms-python.debugpy",
+        "redhat.vscode-yaml",
+        "tamasfe.even-better-toml",
+        "ms-azuretools.vscode-docker",
+        "mhutchie.git-graph",
+        "eamodio.gitlens",
+        "ranch-hand-robotics.rde-pack"
+      ]
+    }
+  },
+  "postCreateCommand": "git config --global --add safe.directory /HAPLY_INVERSE"
+}

@@ -1,0 +1,21 @@
+services:
+  haply-inverse:
+    build: .
+    image: haply_inverse:latest
+    container_name: haply_inverse
+    stdin_open: true
+    tty: true
+    network_mode: host
+    privileged: true
+    volumes:
+      - ./:/HAPLY_INVERSE
+      - /HAPLY_INVERSE/ros_ws/build     # 容器独占，宿主机看不到
+      - /HAPLY_INVERSE/ros_ws/install   # 容器独占，宿主机看不到
+      - /HAPLY_INVERSE/ros_ws/log       # 容器独占，宿主机看不到
+    environment:
+      - DISPLAY=${DISPLAY}
+      - QT_X11_NO_MITSHM=1
+      - RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+      - ROS_DOMAIN_ID=0
+      - ROS_LOCALHOST_ONLY=0
+      - CYCLONEDDS_URI=${CYCLONEDDS_URI:-}

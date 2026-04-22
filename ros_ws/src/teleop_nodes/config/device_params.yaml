@@ -1,0 +1,81 @@
+# 文件: ros_ws/src/teleop_nodes/config/device_params.yaml
+# 用法: ros2 launch teleop_nodes teleop_launch.py
+#       或 ros2 run teleop_nodes device_node --ros-args --params-file <此文件路径>
+#
+# 修改参数后不需要重新编译，重启节点即可生效
+
+device_node:               # ← 必须与节点名一致（launch 里 name='device_node'）
+  ros__parameters:         # ← 固定写法，两个下划线
+
+    # ============================================================
+    # 基础参数
+    # ============================================================
+    publish_rate_hz: 100.0           # 主循环频率 (Hz)
+    startup_wait: 2.0                # 设备连接等待时间 (s)
+    position_scale: 1.0              # 位置缩放因子
+    smoothing_alpha: 0.15            # 位置平滑系数 (0~1, 越大越灵敏)
+
+    # ============================================================
+    # 机器人 Home 位姿（Franka base 系）
+    # ============================================================
+    robot_home_x: 0.30
+    robot_home_y: 0.0
+    robot_home_z: 0.5
+    robot_home_qx: 0.999
+    robot_home_qy: 0.0
+    robot_home_qz: 0.0
+    robot_home_qw: 0.0
+
+    # ============================================================
+    # 传感器力反馈
+    # ============================================================
+    force_scale_x: 0.15              # X 轴力缩放
+    force_scale_y: 0.15              # Y 轴力缩放
+    force_scale_z: 0.25              # Z 轴力缩放
+    max_feedback_force: 10.0         # 传感器力截断上限 (N)
+    force_filter_alpha: 0.5          # 力低通滤波系数
+    force_topic: "/end_effector_force"  # 订阅的力话题名
+
+    # ============================================================
+    # 姿态追踪
+    # ============================================================
+    enable_orientation_tracking: false
+    orientation_scale: 1.0
+
+    # ============================================================
+    # 阻抗控制
+    # ============================================================
+    impedance_k_x: 50.0             # 刚度 X (N/m)
+    impedance_k_y: 50.0             # 刚度 Y (N/m)
+    impedance_k_z: 100.0            # 刚度 Z (N/m)
+    impedance_c_x: 17.0             # 阻尼 X (N·s/m)
+    impedance_c_y: 17.0             # 阻尼 Y (N·s/m)
+    impedance_c_z: 20.0             # 阻尼 Z (N·s/m)
+    sensor_force_weight: 0.7        # 传感器力权重
+    impedance_force_weight: 0.3     # 阻抗力权重
+    max_impedance_force: 3.0        # 阻抗力上限 (N)
+    enable_impedance_feedback: true
+    velocity_filter_alpha: 0.2      # 速度估计滤波系数
+    impedance_filter_alpha: 0.3     # 阻抗力滤波系数
+
+    # ============================================================
+    # 死区 + 接触检测 + 变刚度
+    # ============================================================
+    dead_zone_m: 0.018               # 死区半径 (m)
+    contact_pulse_amplitude: 1.5     # 接触脉冲峰值 (N)
+    contact_pulse_tau: 0.035         # 脉冲衰减时间常数 (s)
+    contact_error_rate_threshold: 0.04   # 误差增长速率阈值 (m/s)
+    contact_force_step_threshold: 2.5    # 传感器力阶跃阈值 (N)
+    contact_cooldown_s: 0.5          # 脉冲最小间隔 (s)
+    k_min_scale: 1.0                 # 自由空间刚度倍率
+    k_max_scale: 2.0                 # 硬接触刚度倍率
+    tracking_window_size: 20         # 跟踪比窗口 (帧数)
+    combined_force_hard_limit: 8.0   # 合力安全硬上限 (N)
+
+    # ============================================================
+    # Z 轴期望力
+    # ============================================================
+    force_z_desired: -3.0            # 期望力 (N), 负值=向下
+    force_z_topic: "/device/force_z"
+    force_z_publish_divider: 5       # 发送频率分频 (100Hz/5=20Hz)
+    enable_force_z_publish: true

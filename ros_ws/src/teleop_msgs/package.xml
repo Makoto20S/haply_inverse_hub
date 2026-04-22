@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<package format="3">                              <!-- format="3" 是 ROS 2 推荐格式 -->
+  <name>teleop_msgs</name>                        <!-- 包名，必须和目录名一致 -->
+  <version>0.1.0</version>
+  <description>Custom messages for teleoperation</description>
+  <maintainer email="todo@todo.com">todo</maintainer>
+  <license>MIT</license>
+
+  <!-- ===== 构建工具依赖 ===== -->
+  <buildtool_depend>ament_cmake</buildtool_depend>              <!-- ROS 2 的 CMake 构建系统 -->
+  <buildtool_depend>rosidl_default_generators</buildtool_depend> <!-- .msg → Python/C++ 代码生成器 -->
+
+  <!-- ===== 普通依赖 ===== -->
+  <depend>std_msgs</depend>                        <!-- 因为 .msg 里用了 std_msgs/Header -->
+
+  <!-- ===== 运行时依赖 ===== -->
+  <exec_depend>rosidl_default_runtime</exec_depend>  <!-- 运行时需要的消息序列化库 -->
+
+  <!-- ===== 声明自己是消息接口包 ===== -->
+  <member_of_group>rosidl_interface_packages</member_of_group>  <!-- 让 ROS 2 知道这个包提供消息类型 -->
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
